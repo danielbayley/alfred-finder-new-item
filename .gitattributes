@@ -1,0 +1,5 @@
+[attr]lfs filter=lfs diff=lfs merge=lfs -text
+*.png   lfs
+*.gif   lfs
+
+*.alfredworkflow filter=zip diff=zip

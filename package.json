@@ -1,0 +1,68 @@
+{
+  "name": "alfred-finder-new-item",
+  "version": "0.0.0",
+  "description": "Swiftly create new items in Finder with support for templates.",
+  "keywords": [
+    "alfred",
+    "workflow",
+    "packal",
+    "template",
+    "finder",
+    "macos",
+    "osx"
+  ],
+  "homepage": "https://github.com/danielbayley/alfred-finder-new-item#readme",
+  "repository": "danielbayley/alfred-finder-new-item",
+  "bugs": "https://github.com/danielbayley/alfred-finder-new-item/issues",
+  "author": {
+    "name": "Daniel Bayley",
+    "email": "daniel.bayley@me.com",
+    "url": "https://github.com/danielbayley"
+  },
+  "license": "MIT",
+  "os": [
+    "darwin"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "preferGlobal": true,
+  "devDependencies": {
+    "coffee-script": "^1.11.1",
+    "change-case": "^3.0.0"
+  },
+  "dependencies": {
+    "alfred-link": "^0.1.4",
+    "glob": "^7.1.0",
+    "parse-gitignore": "^0.3.1"
+  },
+  "files": [
+    "lib/",
+    "info.plist",
+    "templates/"
+  ],
+  "config": {
+    "icon": "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+    "category": "Finder"
+  },
+  "scripts": {
+    "icon": "sips -s format png $npm_package_config_icon -Z 512 --out icon.png",
+    "compile": "coffee -cb --no-header -o lib src/*.coffee && chmod +x lib/*",
+    "templates": "mkdir templates && cp {,$_/}README.md",
+    "test": "npm pack && npm i -g *.tgz",
+    "posttest": "npm run clean",
+    "prepare": "npm run compile && npm run templates",
+    "prepublish": "npm run prepare && cp -f {,.}info.plist && cake plist > info.plist",
+    "postpublish": "npm run clean",
+    "postinstall": "npm run icon & alfred-link",
+    "preuninstall": "lib/un*.js",
+    "clean": "rm -rf *.tgz package templates icon.png lib/*.js & mv -f {.,}info.plist ||:",
+    "zap": "npm run clean & rm -f *.alfredworkflow & npm rm -g $npm_package_name",
+    "stop": "pkill Alfred",
+    "start": "open -a 'Alfred 3'"
+  },
+  "projectmanager": {
+    "title": "finder-new-item",
+    "template": "alfred-workflow"
+  }
+}
