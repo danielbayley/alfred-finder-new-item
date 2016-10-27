@@ -4,7 +4,7 @@ Finder New Item _[Alfred]_ [workflow]
 =====================================
 Swiftly create new items in Finder with support for [templates](#templates).
 
-<img width="600px" src="https://github.com/danielbayley/alfred-finder-new-item/blob/master/demo.gif" alt="demo"></img>  
+<img width="600px" src="https://media.githubusercontent.com/media/danielbayley/alfred-finder-new-item/master/demo.gif" alt="demo"></img>  
 \* Demo using the _[mnml]_ Alfred [theme].
 
 Templates
