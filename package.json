@@ -55,6 +55,7 @@
     "prepare": "npm run compile && npm run templates",
     "prepublish": "npm run prepare && cp -f {,.}info.plist && cake plist > info.plist",
     "postpublish": "npm run clean",
+    "packal": "npm run icon & npm pack && src/*.*sh && npm run clean",
     "postinstall": "npm run icon & alfred-link",
     "preuninstall": "lib/un*.js",
     "clean": "rm -rf *.tgz package templates icon.png lib/*.js & mv -f {.,}info.plist ||:",
