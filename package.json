@@ -1,6 +1,6 @@
 {
   "name": "alfred-finder-new-item",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Swiftly create new items in Finder with support for templates.",
   "keywords": [
     "alfred",
@@ -51,6 +51,7 @@
     "templates": "mkdir templates && cp {,$_/}README.md",
     "test": "npm pack && npm i -g *.tgz",
     "posttest": "npm run clean",
+    "postversion": "git push --follow-tags && npm publish",
     "prepare": "npm run compile && npm run templates",
     "prepublish": "npm run prepare && cp -f {,.}info.plist && cake plist > info.plist",
     "postpublish": "npm run clean",
