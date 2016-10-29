@@ -7,15 +7,11 @@ osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'|
 #decodeURI(Application("Finder").insertionLocation().url()).substr(7)
 read &&
 
-if which ksdiff # Kaleidoscope
-then alias diff=ksdiff
-elif which opendiff # Xcode CLT
-then alias diff=opendiff
-fi
+# Select diff tool
+for tool (opendiff ksdiff) if (/usr/bin/which -s $tool) alias diff=$tool
 
 case $@ in
-  reveal*) open -R ${@#* };;
-  open*|edit*) open ${@#* };;
+  open*) eval $@;; # Run command
   *) # else
 
   if [ -f $@ ] # Copy template file or diff with incumbent

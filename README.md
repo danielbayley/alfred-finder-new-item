@@ -17,12 +17,12 @@ If the selected template would replace an existing item, the two will be compare
 
 The workflow will respect a `.gitignore` file in the templates directory, which can itself also be used as a template.
 
-<kbd>⌘</kbd> select to reveal original template.  
-<kbd>⌥</kbd> select to edit file template.
+<kbd>⌥</kbd> select to edit template.  
+<kbd>⌘</kbd> select to reveal original template.
 
 Install
 -------
-This workflow requires [Node].js (easily available with _[Homebrew]_) and [Alfred] 3 with the paid [Powerpack] upgrade.
+This workflow requires [Node].js (easily available with _[Homebrew]_) and [Alfred] 3 with the paid _[Powerpack]_ upgrade.
 
 ~~~ sh
 brew install node

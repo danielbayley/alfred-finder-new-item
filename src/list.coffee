@@ -17,31 +17,29 @@ options =
 
 #-------------------------------------------------------------------------------
 
-key = (subtitle, arg) ->
+key = (subtitle, command) ->
   if @template
-    #valid: true
     subtitle: subtitle
-    arg: arg
-  else subtitle: ''
+    arg: command
+  else subtitle: '' #valid: false
 
 list = (item) ->
   @template = matches?[0][item]?
   @file = cache?["#{TEMPLATES}/#{item}"].match /FILE/
+
+  keys = if @file
+    alt: key "Edit template", "open '#{item}'"
+    cmd: key "Reveal in Finder", "open -R '#{item}'"
+    ctrl: subtitle: ''
+  else {} # Folder
+  keys.alt ?= keys.cmd ?= key "Open in Finder", "open '#{item}'"
 
   #uid: item.toLowerCase()
   title: item
   autocomplete: item
   type: 'file'#:skipcheck
   arg: item
-  mods:
-    if @file
-      alt: key "Edit template", "edit #{item}"
-      cmd: key "Reveal in Finder", "reveal #{item}"
-      ctrl: subtitle: ''
-    else # Folder
-      alt: key "Open in Finder", "edit #{item}"
-      cmd: key "Open in Finder", "open #{item}"
-      ctrl: subtitle: ''
+  mods: keys
   icon:
     type: 'fileicon' #filetype
     path:
@@ -50,7 +48,7 @@ list = (item) ->
 
 items = [list query]
 {cache, matches} = glob "*#{query}*", options, (err, templates) ->
-  for template in templates #sync "*#{query}*", options
+  for template in templates
     if query.match ///^#{template}$///i
       items.pop list query
 
