@@ -18,7 +18,8 @@ If the selected template would replace an existing item, the two will be compare
 The workflow will respect a `.gitignore` file in the templates directory, which can itself also be used as a template.
 
 <kbd>⌥</kbd> select to edit template.  
-<kbd>⌘</kbd> select to reveal original template.
+<kbd>⌘</kbd> select to reveal original template.  
+<kbd>⌃</kbd> select to remove template.
 
 Install
 -------

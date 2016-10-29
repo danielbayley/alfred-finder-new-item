@@ -33,6 +33,8 @@ list = (item) ->
     ctrl: subtitle: ''
   else {} # Folder
   keys.alt ?= keys.cmd ?= key "Open in Finder", "open '#{item}'"
+  #shift:
+  keys.ctrl = key "Trash template", "mv -f '#{item}' ~/.Trash"
 
   #uid: item.toLowerCase()
   title: item

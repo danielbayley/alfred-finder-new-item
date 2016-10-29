@@ -11,7 +11,7 @@ read &&
 for tool (opendiff ksdiff) if (/usr/bin/which -s $tool) alias diff=$tool
 
 case $@ in
-  open*) eval $@;; # Run command
+  open*|mv*) eval $@;; # Run command
   *) # else
 
   if [ -f $@ ] # Copy template file or diff with incumbent
