@@ -44,7 +44,7 @@ list = (item) ->
     type: 'fileicon' #filetype
     path:
       if @template then "#{TEMPLATES}/#{item}"
-      else unless @file then '/bin' else null
+      else unless @file ? ~item.indexOf '.' then '/bin' else null
 
 items = [list query]
 {cache, matches} = glob "*#{query}*", options, (err, templates) ->
