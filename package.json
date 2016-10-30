@@ -47,7 +47,8 @@
   },
   "scripts": {
     "icon": "sips -s format png $npm_package_config_icon -Z 512 --out icon.png",
-    "compile": "coffee -cb --no-header -o lib src/*.coffee && chmod +x lib/*",
+    "compile": "coffee --no-header $w -cbo lib src && chmod +x lib/*",
+    "watch": "w=-w npm run compile",
     "templates": "mkdir templates && cp {,$_/}README.md",
     "test": "npm pack && npm i -g *.tgz",
     "posttest": "npm run clean",
