@@ -1,6 +1,6 @@
 {
   "name": "alfred-finder-new-item",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Swiftly create new items in Finder with support for templates.",
   "keywords": [
     "alfred",
@@ -28,8 +28,10 @@
   },
   "preferGlobal": true,
   "devDependencies": {
-    "coffee-script": "^1.11.1",
-    "change-case": "^3.0.0"
+    "change-case": "latest",
+    "coffee-script": "latest",
+    "copy-node-modules": "latest",
+    "plist": "latest"
   },
   "dependencies": {
     "alfred-link": "^0.1.4",
@@ -37,8 +39,8 @@
     "parse-gitignore": "^0.3.1"
   },
   "files": [
-    "lib/",
     "info.plist",
+    "lib/",
     "templates/"
   ],
   "config": {
