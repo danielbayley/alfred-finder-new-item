@@ -64,7 +64,7 @@
     "postinstall": "npm run icon & alfred-link",
     "preuninstall": "lib/un*.js",
     "clean": "rm -rf *.tgz package templates icon.png lib/*.js & mv -f {.,}info.plist ||:",
-    "zap": "npm run clean & rm -f *.alfredworkflow & npm rm -g $npm_package_name",
+    "zap": "npm run clean & rm -f *.alfredworkflow & npm rm -g $NPM_PACKAGE_NAME",
     "stop": "pkill Alfred",
     "start": "open -a 'Alfred 3'"
   },

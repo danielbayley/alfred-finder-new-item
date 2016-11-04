@@ -6,7 +6,7 @@ TEMPLATES = process.env.TEMPLATES ? "#{process.cwd()}/templates"
 ignore = require 'parse-gitignore'
 ignored = ignore "#{TEMPLATES}/.gitignore"
 
-glob = require 'glob'
+glob = require 'glob' #{sync} =
 options =
   cwd: TEMPLATES
   nocase: true
@@ -18,14 +18,14 @@ options =
 #-------------------------------------------------------------------------------
 
 key = (subtitle, command) ->
-  if @template
+  if @template?
     subtitle: subtitle
     arg: command
   else subtitle: '' #valid: false
 
 list = (item) ->
-  @template = matches?[0][item]?
-  @file = cache?["#{TEMPLATES}/#{item}"].match /FILE/
+  @template = templates?.cache["#{TEMPLATES}/#{item}"]
+  @file = @template?.match /FILE/
 
   keys = if @file
     alt: key "Edit template", "open '#{item}'"
@@ -45,15 +45,14 @@ list = (item) ->
   icon:
     type: 'fileicon' #filetype
     path:
-      if @template then "#{TEMPLATES}/#{item}"
+      if @template? then "#{TEMPLATES}/#{item}"
       else unless @file ? ~item.indexOf '.' then '/bin' else null
 
 items = [list query]
-{cache, matches} = glob "*#{query}*", options, (err, templates) ->
-  for template in templates
-    if query.match ///^#{template}$///i
+templates = glob "*#{query}*", options, ->
+  templates?.found.map (template) ->
+    if ///^#{template}$///i.test query
       items.pop list query
-
     items.push list template
 
   console.log JSON.stringify {items}
