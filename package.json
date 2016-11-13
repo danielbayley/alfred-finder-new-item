@@ -34,7 +34,7 @@
     "plist": "latest"
   },
   "dependencies": {
-    "alfred-link": "^0.1.4",
+    "alfred-link": "^0.2.0",
     "glob": "^7.1.0",
     "parse-gitignore": "^0.3.1"
   },
@@ -62,7 +62,7 @@
     "postpublish": "npm run clean",
     "packal": "npm run icon & npm pack && src/*.*sh && npm run clean",
     "postinstall": "npm run icon & alfred-link",
-    "preuninstall": "lib/un*.js",
+    "preuninstall": "alfred-unlink",
     "clean": "rm -rf *.tgz package templates icon.png lib/*.js & mv -f {.,}info.plist ||:",
     "zap": "npm run clean & rm -f *.alfredworkflow & npm rm -g $NPM_PACKAGE_NAME",
     "stop": "pkill Alfred",
