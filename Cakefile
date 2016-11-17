@@ -43,3 +43,7 @@ task 'plist',"Update info.plist from package.json", (options) ->
     info.readme = readFileSync 'README.md','utf8'
 
   console.log plist.build info
+
+task 'packal',"Package workflow for distribution on packal.org", ->
+  {name} = update workflow: true
+  spawn 'src/packal.zsh', [name]
