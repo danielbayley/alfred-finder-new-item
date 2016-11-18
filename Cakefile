@@ -1,9 +1,10 @@
 {spawn, execSync} = require 'child_process'
-{readFile, readFileSync} = require 'fs'
+{readFileSync} = require 'fs'
 pkg = require './package'#.json
 {title} = require 'change-case'
 {parse, build} = require 'plist' #'../alfred-link/lib/plist-transform'
 #bundle = require 'copy-node-modules'
+process.stdin.setEncoding 'utf8'
 
 #-------------------------------------------------------------------------------
 
@@ -19,16 +20,14 @@ fix = (obj) -> # FIXME https://github.com/TooTallNate/plist.js/issues/75
   return obj
 #-------------------------------------------------------------------------------
 
-update = (options) ->
-  info = fix parse readFileSync '.info.plist','utf8' ? {}
-
+update = (options, info = {}) ->
   info.category = category if category = pkg.config?.category
 
   name = title pkg.name.replace /// (^alfred|#{info.category}) ///ig,''
   info.name ?= pkg.config?.name ? name
 
   if options?.workflow # Packal
-    info.version = pkg.versions
+    info.version = pkg.version
     info.description = pkg.description #description if description =
     info.webaddress = homepage if homepage = pkg.homepage
     info.createdby = author if author = pkg.author?.name
@@ -53,7 +52,8 @@ update = (options) ->
 option '-w','--workflow',"Also include npm postinstall modifications."
 
 task 'plist',"Update plist info from package.json", (options) ->
-  console.log build update options
+  process.stdin.on 'data', (info) ->
+    console.log build update options, fix parse info
 
 task 'packal',"Package workflow for distribution on packal.org", ->
   {name} = update workflow: true
