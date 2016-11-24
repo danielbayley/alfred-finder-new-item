@@ -1,4 +1,5 @@
 [![badge][npm]][package]
+[![badge][downloads]][package]
 
 Finder New Item _[Alfred]_ [workflow]
 =====================================
@@ -9,11 +10,11 @@ Swiftly create new items in Finder with support for [templates](#templates).
 
 Templates
 ---------
-Templates are sourced from the workflow itself by default, but this can be overriden by a `TEMPLATES` [environment variable] specifying an alternative folder path.
+Templates are sourced from the workflow itself by default, but this can be overridden by a `TEMPLATES` [environment variable] specifying an alternative folder path.
 
 [Symbolic links] at the root level of the templates directory will be followed such that the original item is copied.
 
-If the selected template would replace an existing item, the two will be compared using your favourite [diff tool].
+If the selected template would replace an existing item, the two will first be compared using your favourite [diff tool].
 
 The workflow will respect a `.gitignore` file in the templates directory, which can itself also be used as a template.
 
@@ -46,6 +47,7 @@ License
 [awm]:                    https://github.com/jonathanwiesel/awm
 
 [npm]:                    https://img.shields.io/npm/v/alfred-finder-new-item.svg?style=flat-square
+[downloads]:              https://img.shields.io/npm/dt/alfred-finder-new-item.svg?style=flat-square
 [package]:                https://npmjs.com/package/alfred-finder-new-item
 [node]:                   https://nodejs.org
 [homebrew]:               http://brew.sh
