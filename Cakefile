@@ -2,8 +2,7 @@
 {readFileSync} = require 'fs'
 pkg = require './package'#.json
 {title} = require 'change-case'
-{parse, build} = require 'plist' #'../alfred-link/lib/plist-transform'
-#bundle = require 'copy-node-modules'
+{parse, build} = require 'plist'
 process.stdin.setEncoding 'utf8'
 
 #-------------------------------------------------------------------------------
@@ -28,7 +27,7 @@ update = (options, info = {}) ->
 
   if options?.workflow # Packal
     info.version = pkg.version
-    info.description = pkg.description #description if description =
+    info.description = pkg.description
     info.webaddress = homepage if homepage = pkg.homepage
     info.createdby = author if author = pkg.author?.name
 
@@ -41,10 +40,6 @@ update = (options, info = {}) ->
   info.readme ?= pkg.config?.readme ? pkg.description
   if info.readme is true
     info.readme = readFileSync 'README.md','utf8'
-
-  #process.env.npm_package_name ?= pkg.name
-  #for key of pkg.config
-    #process.env["npm_package_config_#{key}"] ?= pkg.config[key]
 
   return info
 #-------------------------------------------------------------------------------

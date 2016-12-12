@@ -1,10 +1,8 @@
-#! /bin/zsh -f +o no_match --aliases
-cd ${TEMPLATES:-templates} #: ${TEMPLATES:=templates}
-#((!$#)) && exit
+#! /bin/zsh -f +-no-match --aliases
+cd ${TEMPLATES:-templates}
 
 # Active Finder tab
 osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'|
-#decodeURI(Application("Finder").insertionLocation().url()).substr(7)
 read &&
 
 # Select diff tool
@@ -25,10 +23,10 @@ case $@ in
   elif [ -d $REPLY/$@ ]
   then diff {$REPLY/,}$@
   elif [ -d $@ ]
-  then cp -RL $@ $REPLY #-n
+  then cp -RL $@ $REPLY
 
   # New folder
-  elif [[ $@ != *.* ]] #=~ '\.[A-z]{1,4}$'
+  elif [[ $@ != *.* ]]
   then mkdir -p $REPLY/$@
 
   # New file
