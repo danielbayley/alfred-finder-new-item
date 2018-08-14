@@ -46,8 +46,8 @@ License
 [packal]:                 https://packal.org/workflow/finder-new-item
 [awm]:                    https://github.com/jonathanwiesel/awm
 
-[npm]:                    https://img.shields.io/npm/v/alfred-finder-new-item.svg?style=flat-square
-[downloads]:              https://img.shields.io/npm/dt/alfred-finder-new-item.svg?style=flat-square
+[npm]:                    https://flat.badgen.net/npm/v/alfred-finder-new-item
+[downloads]:              https://flat.badgen.net/npm/dt/alfred-finder-new-item
 [package]:                https://npmjs.com/package/alfred-finder-new-item
 [node]:                   https://nodejs.org
 [homebrew]:               http://brew.sh
