@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "alfred-link": "^0.3.1",
-    "glob": "^7.1.0",
+    "glob": "^8.0.2",
     "parse-gitignore": "^0.3.1"
   },
   "files": [
