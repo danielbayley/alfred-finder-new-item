@@ -3,3 +3,6 @@
 *.gif   lfs
 
 *.alfredworkflow filter=zip diff=zip
+
+*.coffee linguist-language=JavaScript
+Cakefile linguist-language=JavaScript
