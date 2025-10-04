@@ -31,7 +31,7 @@
     "change-case": "latest",
     "coffee-script": "latest",
     "copy-node-modules": "latest",
-    "plist": "latest"
+    "plist": "^3.1.0"
   },
   "dependencies": {
     "alfred-link": "^0.3.1",
